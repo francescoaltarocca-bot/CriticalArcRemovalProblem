@@ -205,12 +205,12 @@ sugli esempi della directory corrente
 """
 # Imposta la cartella contenente i file .dat
 folder_path = "./"          # Modifica con il percorso reale
-output_file = "output_H4000.ter.txt"  # File dove salvare i risultati
+output_file = "output.txt"  # File dove salvare i risultati
 # Trova tutti i file .dat nella cartella
 dat_files = sorted([f for f in os.listdir(folder_path) if f.endswith(".dat")])
 
 # Percorso dell'eseguibile AMPL
-ampl_executable = "C:/Users/francesco/AMPL/ampl"  # Modifica con il percorso corretto
+ampl_executable = "./AMPL/ampl"  # Modifica con il percorso corretto
 
 # Controlla se ci siano file .dat
 if not dat_files:
@@ -242,3 +242,4 @@ with open(output_file, "w") as outFile:
         #AMPL
         runAmpl("LP.run", dat_file , f"Solve method: LP AMPL normal", outFile, ampl_executable)
         runAmpl("LP_opt.run", dat_file , f"Solve method: LP AMPL opt", outFile, ampl_executable)
+
