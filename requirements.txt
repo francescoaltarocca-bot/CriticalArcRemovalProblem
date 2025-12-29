@@ -1,0 +1,19 @@
+# Minimum Python version
+# Python >= 3.8
+
+# PySpark for distributed data processing
+pyspark>=3.3.0
+
+# GraphFrames for graph processing with PySpark
+graphframes>=0.8.2
+
+# NLP library
+spacy>=3.5.0
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl
+
+# Standard scientific Python packages
+pandas>=1.5.0
+numpy>=1.24.0
+
+# Optional helper libraries
+itertools  # standard library, included with Python
