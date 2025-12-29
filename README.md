@@ -1,116 +1,87 @@
-# BigDataGraph
+# CriticalArcRemovalProblem
+
+
 
 ## Description
 
-**BigDataGraph** is a Python-based project for **Social Network Analysis (SNA)** built from Twitter data provided in JSON format.  
-The software constructs a **unified graph** representing relationships between users, hashtags, and retweets, enabling structural and semantic analysis of social interactions.
-
-The project is designed for **big data processing**, **graph analytics**, and **network-based exploration** of relationships in general and use Jaccard similarity.
-
-**BigDataGraph is intended for research and educational purposes in the fields of
-data science, network science, and computational social analysis.**
-
----
+This software focuses on optimizing the completion time of a complex process, divided into a series of interdependent activities. In particular, it studies the possibility of
+reducing overall times by removing some weak dependencies between activities.
+In the context of an operational process, personnel assigned to a specific activity may often
+be temporarily assigned to other tasks, or a lack of resources, such as machinery, may prevent the simultaneous execution of multiple activities. These factors generate precedence constraints
+that define the order of execution of operations and can have a significant impact on the total duration of the project.
+To improve efficiency, a company could invest financial resources to hire new staff or purchase equipment in order to eliminate some of these dependencies. However, the
+main challenge is to identify which precedence constraints to modify in order to achieve the best possible result, considering both the available resources and the characteristics of the process.
+This analysis focuses on identifying weak precedences whose removal can significantly reduce the overall project time. Specifically, the problem is addressed by simulating scenarios in which a maximum number of activities are removed based on the available budget.
+In linear programming, this problem is known as the **Critical Arc Removal Problem” (CARP)**.
+This software proposes the solution of the **Critical Arc Removal Problem (CARP)** using both exact optimization models implemented in **AMPL** and heuristic algorithms designed to efficiently handle large-scale instances of the problem.
+The Critical Arc Removal Problem involves identifying a subset of critical edges (arcs) whose removal produces the greatest degradation of network performance under given constraints.
 
 ## Repository Structure
 
 ```text
-BigDataGraph/
-├── bigdata/
-│   └── Python modules implementing graph construction logic
-├── main.py – core source code
-├── requirements.txt – Python dependencies
-├── LICENSE
-└── README.md
+CriticalArcRemovalProblem/
+├── AMPL/                    # AMPL models
+├── LICENSE                  # MIT o altra licenza
+├── README.md                # documentazione principale
+├── CITATION.cff             # metadati citazionali
+├── dagGen.py                # generates examples
+├── runAllExamples.py        # run experiments
+└── requirements.txt         # dependencies
 ```
+
+## 🧠 Key Features
+
+- **Exact AMPL models** for small to medium-size instances
+- **Heuristic algorithms** suited for large-scale graphs
+- Support for custom input instances
+- Demonstration scripts and reproducible examples
+
 ## Requirements
 
-Python ≥ 3.8
+Python ≥ 3.9
+
+AMPL (see AMPL documentation)
+
+Solver (CPLEX, Gurobi, or open-source such as CBC)
 
 Install all required dependencies using:
 pip install -r requirements.txt
 
-Typical dependencies include libraries for data processing and graph construction (e.g., networkx).
 See requirements.txt for more datails.
 
 ## Runtime Requirements
-
-- **Python:** 3.8 or higher
-- **Java:** 8 or 11 (required by PySpark)
-- **Apache Spark:** 3.3.0 or higher
+- **Python:** 3.9 or higher
 - **Memory:** at least 8GB recommended for large datasets
 - **OS:** Linux, macOS, or Windows 10+
 
-## Additional Notes
+## Additional software requirement: AMPL
+After installation, ensure that the ampl executable is available in the system PATH.
+Additionally, at least one AMPL-compatible solver (e.g., CBC, Gurobi, CPLEX) must be installed and properly configured.
 
-GraphFrames requires Apache Spark and the corresponding Scala version compatible with your Spark release.
-Always check the official documentation: **GraphFrames for Spark**.
-
-spaCy requires downloading the English language model:
-python -m spacy download en_core_web_sm
+## Licensing note
+This repository does not redistribute AMPL.
+AMPL is proprietary software and is subject to its own license terms, which must be obtained independently by the user.
 
 ## Usage
-
 To generate a graph from a JSON file containing tweets:
 ```bash
-Usage: python main.py input_file [--output_path] [--id_neighbours id] [--save_full_graph] [--save_pbi_report] [--save_word_cloud] [--only_tags_from_not_retweetted_posts]
+Usage: python runAllExamples.py
 
-INPUT_FILE
-Path and filename: the input JSON file containing the data.
+# Set the directory containing the .dat files
+folder_path = "./"          # Modify with the actual path
+output_file = "output.txt"  # File where results will be saved
+# Path to the AMPL executable
+ampl_executable = "./AMPL/ampl"  # Modify with the correct path
 
-Optional arguments
---output_path OUTPUT_PATH
-Output directory where results will be saved.
-Default: ./outputs/
-
---id_neighbours ID
-Compute and export the neighbours of a specific node (user ID).
-
---save_full_graph 
-Save the complete generated graph to disk.
-Default: False
-
---save_pbi_report 
-Generate and save a Power BI–compatible report.
-Default: False
-
---save_word_cloud 
-Generate and save a word cloud from the extracted tags.
-Default: False
-
---only_tags_from_not_retweetted_posts
-Consider only hashtags extracted from non-retweeted posts.
-Default: False
 ```
 
 ## Output
 
-The software produces a graph containing:
-
-- **Nodes**
-  - Users
-  - Hashtags
-
-- **Edges**
-  - Retweet relationships
-  - Shared hashtags
-  - Similarity relationships (e.g., Jaccard similarity)
-
-Edges representing:
-- retweet relationships
-- shared hashtags
-- similarity relationships (e.g., Jaccard similarity)
-
-The resulting graph can be further analyzed using graph analysis tools such as NetworkX, Gephi, or custom analytics pipelines.
+The output file contains detailed logs of the experimental runs, including parameter settings, execution results, and performance metrics for both AMPL optimization models and heuristic models.
 
 ## Example
 ```bash
-python main.py \
-  --input datasets/data.json \
-  --output results/ \
-  --save_full_graph \
-  --save_pbi_report \
-  --save_word_cloud
+python runAllExamples.py
 ```
 
 ## Reproducibility
@@ -129,13 +100,13 @@ See the LICENSE file for details.
 
 If you use BigDataGraph in academic work, please cite it as follows:
 
-@software{BigDataGraph2025,
-  title     = {BigDataGraph},
+@software{CriticalArcRemovalProblem2025,
+  title     = {CriticalArcRemovalProblem},
   author    = {Altarocca, Francesco},
   affiliation = {Independent Researcher},
   year      = {2025},
   publisher = {Zenodo},
-  doi       = {https://doi.org/10.5281/zenodo.18088015}
+  doi       = {}
 }
 
 ## Disclaimer
