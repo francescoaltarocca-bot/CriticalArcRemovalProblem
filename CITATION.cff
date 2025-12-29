@@ -4,6 +4,6 @@ authors:
   - family-names: Altarocca
     given-names: Francesco
     affiliation: "Independent Researcher"
-version: "0.2.1"
-doi: ""
+version: "0.2.2"
+doi: "https://doi.org/10.5281/zenodo.18089854"
 url: "https://github.com/francescoaltarocca-bot/CriticalArcRemovalProblem"
